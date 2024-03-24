@@ -14,9 +14,16 @@ int Sum(const double arr[], const int n);
 double Avg(const int arr[], const int n);
 
 int minValueIn(const int arr[], const int n);
+int minValueIn(const double arr[], const int n);
+
 int maxValueIn(const int arr[], const int n);
+int maxValueIn(const double arr[], const int n);
+
 void shiftLeft(int arr[], const int n, int c);
+void shiftLeft(double arr[], const int n, int c);
+
 void shiftRight(int arr[], const int n, int c);
+void shiftRight(double arr[], const int n, int c);
 
 void main()
 {
@@ -46,6 +53,11 @@ void main()
 	FillRand(brr, m);
 	Print(brr, m);
 	cout << "Сумма элементов массива: " << Sum(brr, m) << endl;
+	cout << "Минимальное значение массива: " << minValueIn(brr, n) << endl;
+	cout << "Максимальное значение массива: " << maxValueIn(brr, n) << endl;
+	int d = 0;
+	shiftLeft(brr, n, d);
+	shiftRight(brr, n, d);
 	
 }
 void FillRand(int arr[], const int n, int minRand, int maxRand)
@@ -126,9 +138,31 @@ int minValueIn(const int arr[], const int n)
 	}
 	return minValue;
 }
+int minValueIn(const double arr[], const int n)
+{
+	double minValue;
+	minValue = arr[0];
+	for (int i = 0; i < n; i++)
+	{
+		if (arr[i] < minValue)minValue = arr[i];
+				
+	}
+	return minValue;
+}
 int maxValueIn(const int arr[], const int n)
 {
 	int maxValue;
+	maxValue = arr[0];
+	for (int i = 0; i < n; i++)
+	{
+		if (arr[i] > maxValue)maxValue = arr[i];
+	}
+	return maxValue;
+
+}
+int maxValueIn(const double arr[], const int n)
+{
+	double maxValue;
 	maxValue = arr[0];
 	for (int i = 0; i < n; i++)
 	{
@@ -153,6 +187,21 @@ void shiftLeft(int arr[], const int n, int c)
 	Print(arr, n);
 	
 }
+void shiftLeft(double arr[], const int n, int d)
+{
+	cout << "На сколько элементов сдвинуть массив: "; cin >> d;
+	for (int i = 0; i < d; i++)
+	{
+		int buffer = arr[0];
+		for (int j = 0; j < n - 1; j++)
+		{
+			arr[j] = arr[j + 1];
+		}
+		arr[n - 1] = buffer;
+	}
+	Print(arr, n);
+
+}
 void shiftRight(int arr[], const int n, int c)
 {
 	cout << "На сколько элементов сдвинуть массив: "; cin >> c;
@@ -166,4 +215,20 @@ void shiftRight(int arr[], const int n, int c)
 		arr[0] = buffer;
 	}
 	Print(arr, n);
+
+}
+void shiftRight(double arr[], const int n, int d)
+{
+	cout << "На сколько элементов сдвинуть массив: "; cin >> d;
+	for (int i = 0; i < d; i++)
+	{
+		int buffer = arr[n - 1];
+		for (int j = n - 1; j > 0; j--)
+		{
+			arr[j] = arr[j - 1];
+		}
+		arr[0] = buffer;
+	}
+	Print(arr, n);
+
 }
