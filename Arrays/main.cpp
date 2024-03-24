@@ -3,9 +3,16 @@ using namespace std;
 #define tab "\t"
 
 void FillRand(int arr[], const int n, int minRand = 0, int maxRand = 100);
+void FillRand(double arr[], const int n, int minRand = 0, int maxRand = 100);
+
 void Print(const int arr[], const int n);
+void Print(const double arr[], const int n);
+
 int Sum(const int arr[], const int n);
+int Sum(const double arr[], const int n);
+
 double Avg(const int arr[], const int n);
+
 int minValueIn(const int arr[], const int n);
 int maxValueIn(const int arr[], const int n);
 void shiftLeft(int arr[], const int n, int c);
@@ -34,6 +41,12 @@ void main()
 	shiftLeft(arr, n, c);
 	shiftRight(arr, n, c);
 	
+	const int m = 8;
+	double brr[m];
+	FillRand(brr, m);
+	Print(brr, m);
+	cout << "Сумма элементов массива: " << Sum(brr, m) << endl;
+	
 }
 void FillRand(int arr[], const int n, int minRand, int maxRand)
 {
@@ -43,9 +56,28 @@ void FillRand(int arr[], const int n, int minRand, int maxRand)
 		minRand = maxRand;
 		maxRand = buffer;
 	}
+	minRand *= 100;
+	maxRand *= 100;
 	for (int i = 0; i < n; i++)
 	{
 		arr[i] = minRand + rand() % (maxRand - minRand);
+		arr[i] /= 100;
+	}
+}
+void FillRand(double arr[], const int n, int minRand, int maxRand)
+{
+	if (maxRand < minRand)
+	{
+		int buffer = minRand;
+		minRand = maxRand;
+		maxRand = buffer;
+	}
+	minRand *= 100;
+	maxRand *= 100;
+	for (int i = 0; i < n; i++)
+	{
+		arr[i] = minRand + rand() % (maxRand - minRand);
+		arr[i] /= 100;
 	}
 }
 void Print(const int arr[], const int n)
@@ -55,7 +87,23 @@ void Print(const int arr[], const int n)
 		cout << arr[i] << tab;
 	}
 }
+void Print(const double arr[], const int n)
+{
+	for (int i = 0; i < n; i++)
+	{
+		cout << arr[i] << tab;
+	}
+}
 int Sum(const int arr[], const int n)
+{
+	int sum = 0;
+	for (int i = 0; i < n; i++)
+	{
+		sum += arr[i];
+	}
+	return sum;
+}
+int Sum(const double arr[], const int n)
 {
 	int sum = 0;
 	for (int i = 0; i < n; i++)
