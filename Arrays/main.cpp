@@ -14,10 +14,10 @@ int Sum(const double arr[], const int n);
 double Avg(const int arr[], const int n);
 
 int minValueIn(const int arr[], const int n);
-int minValueIn(const double arr[], const int n);
+double minValueIn(const double arr[], const int n);
 
 int maxValueIn(const int arr[], const int n);
-int maxValueIn(const double arr[], const int n);
+double maxValueIn(const double arr[], const int n);
 
 void shiftLeft(int arr[], const int n, int c);
 void shiftLeft(double arr[], const int n, int c);
@@ -138,7 +138,7 @@ int minValueIn(const int arr[], const int n)
 	}
 	return minValue;
 }
-int minValueIn(const double arr[], const int n)
+double minValueIn(const double arr[], const int n)
 {
 	double minValue;
 	minValue = arr[0];
@@ -160,7 +160,7 @@ int maxValueIn(const int arr[], const int n)
 	return maxValue;
 
 }
-int maxValueIn(const double arr[], const int n)
+double maxValueIn(const double arr[], const int n)
 {
 	double maxValue;
 	maxValue = arr[0];
