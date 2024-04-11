@@ -11,11 +11,15 @@ void FillRand(double arr[], const int n, int minRand = 0, int maxRand = 100);
 void FillRand(char arr[], const int n, int minRand = 0, int maxRand = 100);
 void FillRand(int arr[ROWS][COLS], const int ROWS, const int COLS, int minRand = 0, int maxRand = 100);
 void FillRand(double arr[ROWS][COLS], const int ROWS, const int COLS, int minRand = 0, int maxRand = 100);
+void FillRand(char arr[ROWS][COLS], const int ROWS, const int COLS, int minRand = 0, int maxRand = 100);
 
 void Print(const int arr[], const int n);
 void Print(const double arr[], const int n);
+void Print(const char arr[], const int n);
+
 void Print(const int arr[ROWS][COLS], const int ROWS, const int COLS);
 void Print(const double arr[ROWS][COLS], const int ROWS, const int COLS);
+void Print(const char arr[ROWS][COLS], const int ROWS, const int COLS);
 
 int Sum(const int arr[], const int n);
 int Sum(const double arr[], const int n);
@@ -70,10 +74,9 @@ void main()
 	Print(i_arr, n);
 	shiftRight(i_arr, n, c);
 	cout << delimiter << endl;
+	Print(i_arr, n);
 	
-	
-
-	
+		
 	const int D_SIZE = 8;
 	double d_arr[D_SIZE];
 	FillRand(d_arr, D_SIZE);
@@ -98,6 +101,8 @@ void main()
 	shiftLeft(i_arr_2, ROWS, COLS, number_of_shifts);
 	Print(i_arr_2, ROWS, COLS);
 	shiftRight(i_arr_2, ROWS, COLS, number_of_shifts);
+	Print(i_arr_2, ROWS, COLS);
+	FillRand(i_arr_2, ROWS, COLS);
 	Print(i_arr_2, ROWS, COLS);
 
 
@@ -197,6 +202,13 @@ void Print(const double arr[], const int n)
 		cout << arr[i] << tab;
 	}
 }
+void Print(const char arr[], const int n)
+{
+	for (int i = 0; i < n; i++)
+	{
+		cout << arr[i] << tab;
+	}
+}
 void Print(const int arr[ROWS][COLS], const int ROWS, const int COLS)
 {
 	// вывод двумерного массива на экран
@@ -211,6 +223,30 @@ void Print(const int arr[ROWS][COLS], const int ROWS, const int COLS)
 	}
 }
 void Print(const double arr[ROWS][COLS], const int ROWS, const int COLS)
+{
+	for (int i = 0; i < ROWS; i++)
+	{
+		for (int j = 0; j < COLS; j++)
+		{
+			cout << arr[i][j] << tab;
+
+		}
+		cout << endl;
+	}
+}
+void Print(const char arr[ROWS][COLS], const int ROWS, const int COLS)
+{
+	for (int i = 0; i < ROWS; i++)
+	{
+		for (int j = 0; j < COLS; j++)
+		{
+			cout << arr[i][j] << tab;
+
+		}
+		cout << endl;
+	}
+}
+void FillRand(char arr[ROWS][COLS], const int ROWS, const int COLS, int minRand, int maxRand)
 {
 	for (int i = 0; i < ROWS; i++)
 	{
@@ -467,15 +503,20 @@ void shiftRight(int arr[ROWS][COLS], const int ROWS, const int COLS, int number_
 
 void Sort(int arr[], const int n)
 {
-	for (int i = 0; i < n; i++)
+	for (int i = 0; i < n; i++) //счетчик i выбирает элемент массива, 
+								// в который будет помещено минимальное значение из всех перебираемых
 	{
-		for (int s = i; s < n; s++)
+		for (int j = i + 1; j < n; j++) // счетчик j перебирает оставшиеся элементы масива
+			
 		{
-			if (arr[i] > arr[s])
+			
+			// arr[i] - выбранный элемент
+			// arr[j] - перебираемый элемент
+			if (arr[j] < arr[i])
 			{
 				int buffer = arr[i];
-				arr[i] = arr[s];
-				arr[s] = buffer;
+				arr[i] = arr[j];
+				arr[j] = buffer;
 
 			}
 		}
