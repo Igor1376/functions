@@ -49,6 +49,7 @@ void shiftRight(double arr[], const int n, int c);
 void shiftRight(int arr[ROWS][COLS], const int ROWS, const int COLS, int number_of_shifts);
 
 void Sort(int arr[], const int n);
+void Sort(int arr[ROWS][COLS], const int ROWS, const int COLS);
 
 void main()
 {
@@ -75,6 +76,8 @@ void main()
 	shiftRight(i_arr, n, c);
 	cout << delimiter << endl;
 	Print(i_arr, n);
+	Sort(i_arr, n);
+	Print(i_arr, n);
 	
 		
 	const int D_SIZE = 8;
@@ -100,12 +103,13 @@ void main()
 	cout << "Максимальное значение массива: " << maxValueIn(i_arr_2, ROWS, COLS) << endl;
 	shiftLeft(i_arr_2, ROWS, COLS, number_of_shifts);
 	Print(i_arr_2, ROWS, COLS);
+	
 	shiftRight(i_arr_2, ROWS, COLS, number_of_shifts);
 	Print(i_arr_2, ROWS, COLS);
+	
 	FillRand(i_arr_2, ROWS, COLS);
 	Print(i_arr_2, ROWS, COLS);
-
-
+	
 	double d_arr_3[ROWS][COLS];
 	FillRand(d_arr_3, ROWS, COLS);
 	Print(d_arr_3, ROWS, COLS);
@@ -113,11 +117,9 @@ void main()
 	cout << "Минимальное значение массива: " << minValueIn(d_arr_3, ROWS, COLS) << endl;
 	cout << "Максимальное значение массива: " << maxValueIn(d_arr_3, ROWS, COLS) << endl;
 
-
-	Sort(i_arr, n);
-	Print(i_arr, n);
-
-		
+	Sort(i_arr_2, ROWS, COLS);
+	Print(i_arr_2, ROWS, COLS);
+	
 }
 void FillRand(int arr[], const int n, int minRand, int maxRand)
 {
@@ -194,6 +196,7 @@ void Print(const int arr[], const int n)
 	{
 		cout << arr[i] << tab;
 	}
+	cout << endl;
 }
 void Print(const double arr[], const int n)
 {
@@ -201,6 +204,7 @@ void Print(const double arr[], const int n)
 	{
 		cout << arr[i] << tab;
 	}
+	cout << endl;
 }
 void Print(const char arr[], const int n)
 {
@@ -208,6 +212,7 @@ void Print(const char arr[], const int n)
 	{
 		cout << arr[i] << tab;
 	}
+	cout << endl;
 }
 void Print(const int arr[ROWS][COLS], const int ROWS, const int COLS)
 {
@@ -463,7 +468,6 @@ void shiftLeft(int arr[ROWS][COLS], const int ROWS, const int COLS, int number_o
 		arr[ROWS - 1][COLS - 1] = buffer;
 	}
 }
-
 void shiftRight(int arr[], const int n, int c)
 {
 	//shiftLeft(arr, n, n - number_of_shifts % n);
@@ -522,4 +526,52 @@ void Sort(int arr[], const int n)
 		}
 	}
 	Print(arr, n); 
+}
+void Sort(int arr[ROWS][COLS], const int ROWS, const int COLS)
+{
+	int iterations = 0;
+	int exchanges = 0;
+	for (int i = 0; i < ROWS; i++)
+	{
+		for (int j = 0; j < COLS; j++)
+		{
+			/*for (int k = j + 1; k < COLS; k++)
+			{
+				//arr[i][j] - выбранный элемент
+				//arr[i][k] - перебираемый элемент
+				iterations++;
+				if (arr[i][k] < arr[i][j])
+				{
+					int buffer = arr[i][j];
+					arr[i][j] = arr[i][k];
+					arr[i][k] = buffer;
+					exchanges++;
+
+				}
+			}*/
+			for (int k = i; k < ROWS; k++)
+			{
+				for (int l = k == i ? j + 1 : 0; l < COLS; l++)
+				{
+					//arr[i][j] - выбранный элемент
+					//arr[k][l] - перебираемый элемент
+					//if (k == i && l == 0)l = j + 1;
+					//if (l == COLS)break;
+					iterations++;
+					if (arr[i][j] > arr[k][l])
+					{
+						int buffer = arr[i][j];
+						arr[i][j] = arr[k][l];
+						arr[k][l] = buffer;
+						exchanges++;
+					}
+
+				}
+			}
+
+		}
+		
+	}
+	cout << "Массив отсортирован за " << iterations << " итераций.\n";
+	cout << "При этом выполнено " << exchanges << " обменов элементов.\n";
 }
