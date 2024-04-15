@@ -1,17 +1,8 @@
-﻿#include<iostream>
-using namespace std;
-#define tab "\t"
-#define delimiter "\n----------------------------------------------------\n"
+﻿
+#include"stdafx.h";
+#include"Constants.h";
 
-const int ROWS = 3; // количество строк
-const int COLS = 4; // количество элементов строки
-
-void FillRand(int arr[], const int n, int minRand = 0, int maxRand = 100);
-void FillRand(double arr[], const int n, int minRand = 0, int maxRand = 100);
-void FillRand(char arr[], const int n, int minRand = 0, int maxRand = 100);
-void FillRand(int arr[ROWS][COLS], const int ROWS, const int COLS, int minRand = 0, int maxRand = 100);
-void FillRand(double arr[ROWS][COLS], const int ROWS, const int COLS, int minRand = 0, int maxRand = 100);
-void FillRand(char arr[ROWS][COLS], const int ROWS, const int COLS, int minRand = 0, int maxRand = 100);
+#include"FillRand.h";
 
 void Print(const int arr[], const int n);
 void Print(const double arr[], const int n);
@@ -50,6 +41,10 @@ void shiftRight(int arr[ROWS][COLS], const int ROWS, const int COLS, int number_
 
 void Sort(int arr[], const int n);
 void Sort(int arr[ROWS][COLS], const int ROWS, const int COLS);
+
+
+
+
 
 void main()
 {
@@ -121,75 +116,7 @@ void main()
 	Print(i_arr_2, ROWS, COLS);
 	
 }
-void FillRand(int arr[], const int n, int minRand, int maxRand)
-{
-	if (maxRand < minRand)
-	{
-		int buffer = minRand;
-		minRand = maxRand;
-		maxRand = buffer;
-	}
-	minRand *= 100;
-	maxRand *= 100;
-	for (int i = 0; i < n; i++)
-	{
-		arr[i] = minRand + rand() % (maxRand - minRand);
-		arr[i] /= 100;
-	}
-}
-void FillRand(double arr[], const int n, int minRand, int maxRand)
-{
-	if (maxRand < minRand)
-	{
-		int buffer = minRand;
-		minRand = maxRand;
-		maxRand = buffer;
-	}
-	minRand *= 100;
-	maxRand *= 100;
-	for (int i = 0; i < n; i++)
-	{
-		arr[i] = minRand + rand() % (maxRand - minRand);
-		arr[i] /= 100;
-	}
-}
-void FillRand(char arr[], const int n, int minRand, int maxRand)
-{
-	if (maxRand < minRand)
-	{
-		int buffer = minRand;
-		minRand = maxRand;
-		maxRand = buffer;
-	}
-	minRand *= 100;
-	maxRand *= 100;
-	for (int i = 0; i < n; i++)
-	{
-		arr[i] = minRand + rand() % (maxRand - minRand);
-		arr[i] /= 100;
-	}
-}
-void FillRand(int arr[ROWS][COLS], const int ROWS, const int COLS, int minRand, int maxRand)
-{
-	// заполнение двумерного массива случайными числами
-	for (int i = 0; i < ROWS; i++)
-	{
-		for (int j = 0; j < COLS; j++)
-		{
-			arr[i][j] = rand() % 100;
-		}
-	}
-}
-void FillRand(double arr[ROWS][COLS], const int ROWS, const int COLS, int minRand, int maxRand)
-{
-	for (int i = 0; i < ROWS; i++)
-	{
-		for (int j = 0; j < COLS; j++)
-		{
-			arr[i][j] = rand() % 100;
-		}
-	}
-}
+
 void Print(const int arr[], const int n)
 {
 	for (int i = 0; i < n; i++)
