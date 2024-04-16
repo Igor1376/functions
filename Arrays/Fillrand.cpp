@@ -69,3 +69,24 @@ void FillRand(double arr[ROWS][COLS], const int ROWS, const int COLS, int minRan
 		}
 	}
 }
+void FillRand(char arr[ROWS][COLS], const int ROWS, const int COLS, int minRand, int maxRand)
+{
+	for (int i = 0; i < ROWS; i++)
+	{
+		for (int j = 0; j < COLS; j++)
+		{
+			cout << arr[i][j] << tab;
+
+		}
+		cout << endl;
+	}
+}
+int Sum(const int arr[], const int n)
+{
+	int sum = 0;
+	for (int i = 0; i < n; i++)
+	{
+		sum += arr[i];
+	}
+	return sum;
+}
