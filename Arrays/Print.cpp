@@ -36,6 +36,7 @@ void Print(const int arr[ROWS][COLS], const int ROWS, const int COLS)
 		}
 		cout << endl;
 	}
+	cout << endl;
 }
 void Print(const double arr[ROWS][COLS], const int ROWS, const int COLS)
 {
@@ -48,6 +49,7 @@ void Print(const double arr[ROWS][COLS], const int ROWS, const int COLS)
 		}
 		cout << endl;
 	}
+	cout << endl;
 }
 void Print(const char arr[ROWS][COLS], const int ROWS, const int COLS)
 {
@@ -60,4 +62,5 @@ void Print(const char arr[ROWS][COLS], const int ROWS, const int COLS)
 		}
 		cout << endl;
 	}
+	cout << endl;
 }
