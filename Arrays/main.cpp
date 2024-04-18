@@ -1,20 +1,13 @@
-#include<iostream>
-using namespace std;
-#define tab "\t"
 
-void FillRand(int arr[], const int n, int minRand = 0, int maxRand = 100);
+#include"stdafx.h"
+#include"Constants.h"
+#include"FillRand.h"
+#include"Print.h"
+#include"Sum.h"
+#include"Avg.h"
 
-void FillRand(double arr[], const int n, int minRand = 0, int maxRand = 100);
 
-template<typename T>
 
-void Print(const T arr[], const int n);
-
-template<typename T>
-
-T Sum(const T arr[], const int n);
-
-double Avg(const int arr[], const int n);
 
 void main()
 {
@@ -36,26 +29,3 @@ void main()
 }
 
 
-template<typename T>
-void Print(const T arr[], const int n)
-{
-	for (int i = 0; i < n; i++)
-	{
-		cout << arr[i] << tab;
-	}
-	cout << endl;
-}
-template<typename T>
-T Sum(const T arr[], const int n)
-{
-	T sum = 0;
-	for (int i = 0; i < n; i++)
-	{
-		sum += arr[i];
-	}
-	return sum;
-}
-double Avg(const int arr[], const int n)
-{
-	return (double)Sum(arr, n) / n;
-}
