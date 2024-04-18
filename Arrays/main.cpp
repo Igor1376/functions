@@ -3,6 +3,7 @@ using namespace std;
 #define tab "\t"
 
 void FillRand(int arr[], const int n, int minRand = 0, int maxRand = 100);
+
 void FillRand(double arr[], const int n, int minRand = 0, int maxRand = 100);
 
 template<typename T>
