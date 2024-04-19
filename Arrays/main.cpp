@@ -3,11 +3,11 @@
 #include"Constants.h"
 #include"FillRand.h"
 #include"Print.h"
+#include"Print.cpp"
 #include"Sum.h"
+#include"Sum.cpp"
 #include"Avg.h"
-
-
-
+#include"Avg.cpp"
 
 void main()
 {
